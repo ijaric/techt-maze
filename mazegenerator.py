@@ -50,8 +50,8 @@ class MazeGenerator:
         for i in range(len(row) - 1):
             merge_cells = bool(random.getrandbits(1))
             # Cells belong to the same subset => Build vertical walls
-            if row[i].set == row[i + 1].set:  # Если соседние ячейки принадлежат одному множеству
-                row[i].right_wall = 1  # то добавляем стенку между ними
+            if row[i].set == row[i + 1].set:
+                row[i].right_wall = 1
                 row[i + 1].left_wall = 1
             elif merge_cells:
                 # Merge subsets if NOT (that
@@ -69,8 +69,8 @@ class MazeGenerator:
             build_wall = bool(random.getrandbits(1))
             # Build horizontal walls if it's allowed and random in favour of it
             if new_row_set[row[i].set] > 1 and build_wall:
-                row[i].bottom_wall = 1  # добавляем нижнюю стенку
-                new_row_set[row[i].set] -= 1  # вычитаем
+                row[i].bottom_wall = 1
+                new_row_set[row[i].set] -= 1
 
         return row
 
